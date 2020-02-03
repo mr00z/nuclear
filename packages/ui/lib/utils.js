@@ -28,9 +28,19 @@ export function formatDuration(duration) {
 }
 
 export const getThumbnail = album => {
-  return _.get(album, 'images[0].uri',
-    _.get(album, 'image[0][\'#text\']',
-      _.get(album, 'thumb')));
+  return _.get(
+    album,
+    'images[0].uri',
+    _.get(
+      album,
+      'image[0][\'#text\']',
+      _.get(
+        album,
+        'thumb',
+        _.get(album, 'thumbnail')
+      )
+    )
+  );
 };
 
 export const getTrackItem = track => ({
